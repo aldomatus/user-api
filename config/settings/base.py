@@ -3,7 +3,7 @@
 import environ
 
 ROOT_DIR = environ.Path(__file__) - 3
-APPS_DIR = ROOT_DIR.path('cride')
+APPS_DIR = ROOT_DIR.path('user_api')
 
 env = environ.Env()
 
@@ -30,6 +30,9 @@ ROOT_URLCONF = 'config.urls'
 # WSGI
 WSGI_APPLICATION = 'config.wsgi.application'
 
+#   Users & Authentication
+AUTH_USER_MODEL = 'users.User'
+
 # Apps
 DJANGO_APPS = [
     'django.contrib.auth',
@@ -38,11 +41,17 @@ DJANGO_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    'user_api.users',
+    'user_api.utils',
+    'user_api.api',
 ]
 
 THIRD_PARTY_APPS = [
+    'rest_framework',
+    'rest_framework.authtoken',
 ]
 LOCAL_APPS = [
+    
 ]
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
@@ -134,18 +143,18 @@ EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.s
 # Admin
 ADMIN_URL = 'admin/'
 ADMINS = [
-    ("""Pablo Trinidad""", 'pablotrinidad@ciencias.unam.mx'),
+    ("""Aldo""", 'aldomm61@gmail.com'),
 ]
 MANAGERS = ADMINS
 
 # Celery
-INSTALLED_APPS += ['cride.taskapp.celery.CeleryAppConfig']
-if USE_TZ:
-    CELERY_TIMEZONE = TIME_ZONE
-CELERY_BROKER_URL = env('CELERY_BROKER_URL')
-CELERY_RESULT_BACKEND = CELERY_BROKER_URL
-CELERY_ACCEPT_CONTENT = ['json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERYD_TASK_TIME_LIMIT = 5 * 60
-CELERYD_TASK_SOFT_TIME_LIMIT = 60
+# INSTALLED_APPS += ['cride.taskapp.celery.CeleryAppConfig']
+# if USE_TZ:
+#     CELERY_TIMEZONE = TIME_ZONE
+# CELERY_BROKER_URL = env('CELERY_BROKER_URL')
+# CELERY_RESULT_BACKEND = CELERY_BROKER_URL
+# CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERYD_TASK_TIME_LIMIT = 5 * 60
+# CELERYD_TASK_SOFT_TIME_LIMIT = 60
