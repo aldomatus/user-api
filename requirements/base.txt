@@ -6,6 +6,7 @@ psycopg2==2.7.4 --no-binary psycopg2
 
 # Django
 django==2.0.9
+django-filter
 
 # rest framework
 djangorestframework

@@ -43,12 +43,12 @@ DJANGO_APPS = [
     'django.contrib.admin',
     'user_api.users',
     'user_api.utils',
-    'user_api.api',
 ]
 
 THIRD_PARTY_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
+    'django_filters',
 ]
 LOCAL_APPS = [
     
